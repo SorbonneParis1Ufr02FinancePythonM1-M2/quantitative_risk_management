@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 
 
 def main():
-    # get data -> repository
     portfolio = pd.read_csv(
         r"input\crisis_portfolio.csv",
         delimiter=",",

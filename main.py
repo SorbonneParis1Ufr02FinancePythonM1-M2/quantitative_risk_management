@@ -20,11 +20,13 @@ def main():
     model = Model(repo)
     view = View(repo, model)
 
+    view.to_streamlit()
     view.plot_asset_prices()
     view.plot_portfolio_returns()
     view.display_covariance()
     view.display_portfolio_volatility()
     view.plot_portfolio_volatility()
+
     logger.info("End program")
 
 

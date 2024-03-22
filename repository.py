@@ -43,6 +43,10 @@ class Repository:
             "portfolio_volatility_ylabel"
         ]
 
+        self.streamlit_page_title = self.config["streamlit"]["page_title"]
+        self.streamlit_layout = self.config["streamlit"]["layout"]
+        self.streamlit_sidebar_state = self.config["streamlit"]["sidebar_state"]
+
         self.portfolio = None
         self.asset_prices = None
 
@@ -56,5 +60,5 @@ class Repository:
             dayfirst=True,
         )
         logger.info(f"portfolio shape={self.portfolio.shape}")
-        self.asset_prices = self.portfolio.loc[self.begin_date : self.end_date]
+        self.asset_prices = self.portfolio.loc[self.begin_date: self.end_date]
         logger.info(f"asset_prices shape={self.asset_prices.shape}")

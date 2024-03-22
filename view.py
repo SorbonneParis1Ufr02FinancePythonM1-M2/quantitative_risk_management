@@ -1,5 +1,7 @@
-from matplotlib import pyplot as plt
 import logging
+
+import streamlit as st
+from matplotlib import pyplot as plt
 
 from constants import LOGGER_NAME
 
@@ -14,10 +16,8 @@ class View:
 
     def plot_asset_prices(self):
         logger.info("Plot asset prices")
-        self.repository.asset_prices.plot().set_ylabel(
-            self.repository.asset_prices_ylabel
-        )
-        plt.show()
+        st.pyplot(self.repository.asset_prices.plot(figsize=(20, 10)).set_ylabel(
+            self.repository.asset_prices_ylabel).figure)
 
     def plot_portfolio_returns(self):
         logger.info("Plot portfolio returns")
@@ -40,3 +40,8 @@ class View:
             self.repository.portfolio_volatility_ylabel
         )
         plt.show()
+
+    def to_streamlit(self):
+        st.set_page_config(page_title=self.repository.streamlit_page_title,
+                           layout=self.repository.streamlit_layout,
+                           initial_sidebar_state=self.repository.streamlit_sidebar_state)

@@ -32,6 +32,8 @@ class Repository:
 
         self.weights = self.config["weights"]
         print(f"weights={self.weights}")
+        self.rolling_window = self.config["rolling_window_of_portfolio_returns"]
+
         self.portfolio = None
         self.asset_prices = None
 

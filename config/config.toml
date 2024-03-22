@@ -1,6 +1,7 @@
 begin_date = '2008-01-01'
 end_date =  '2009-12-31'
 weights = [0.25, 0.25, 0.25, 0.25]
+rolling_window_of_portfolio_returns = 30
 
 [input]
 input_folder = 'input'

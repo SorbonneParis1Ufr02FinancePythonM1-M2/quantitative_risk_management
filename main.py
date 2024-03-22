@@ -2,12 +2,14 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from model import Model
 from repository import Repository
 
 
 def main():
     repo = Repository()
     repo.get_data()
+    model = Model(repo)
 
     # get data -> repository
     portfolio = pd.read_csv(

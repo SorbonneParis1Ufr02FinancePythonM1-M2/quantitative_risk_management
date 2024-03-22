@@ -9,3 +9,8 @@ input_file = 'crisis_portfolio.csv'
 delimiter = ','
 index_col = 'Date'
 parse_dates = ['Date']
+
+[view]
+asset_prices_ylabel = "Closing Prices, USD"
+portfolio_returns_ylabel = "Daily Return, %"
+portfolio_volatility_ylabel = "Daily Return, %"

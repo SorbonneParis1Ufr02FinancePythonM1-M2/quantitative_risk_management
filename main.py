@@ -2,8 +2,12 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from repository import Repository
+
 
 def main():
+    repo = Repository()
+
     # get data -> repository
     portfolio = pd.read_csv(
         r"input\crisis_portfolio.csv",

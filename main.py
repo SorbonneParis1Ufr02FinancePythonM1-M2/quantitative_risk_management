@@ -7,6 +7,7 @@ from repository import Repository
 
 def main():
     repo = Repository()
+    repo.get_data()
 
     # get data -> repository
     portfolio = pd.read_csv(

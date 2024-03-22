@@ -1,1 +1,10 @@
-working_directory = 'C:\work'
+begin_date = '2008-01-01'
+end_date =  '2009-12-31'
+weights = [0.25, 0.25, 0.25, 0.25]
+
+[input]
+input_folder = 'input'
+input_file = 'crisis_portfolio.csv'
+delimiter = ','
+index_col = 'Date'
+parse_dates = ['Date']

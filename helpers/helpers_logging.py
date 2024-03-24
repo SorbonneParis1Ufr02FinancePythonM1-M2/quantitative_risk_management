@@ -18,7 +18,6 @@ def init_logger_from_file(logger_name: str, config_full_path: str) -> logging.Lo
     log_file_path = dict_config.get("handlers").get("file").get("filename")
     config.dictConfig(dict_config)
     logger = logging.getLogger(logger_name)
-    print(type(logger))
     logger.info(f"start logger {logger_name}")
     logger.info(f"logger filename={log_file_path}")
 

@@ -1,6 +1,7 @@
 import logging
 
 import numpy as np
+import pandas as pd
 
 from constants import TRADING_DAYS_PER_YEAR, LOGGER_NAME
 
@@ -12,8 +13,19 @@ class Model:
     This class is responsible for all computations.
     """
     def __init__(self, repository):
+
         logger.info("Initializing Model")
         self.repository = repository
+        self.asset_prices = pd.DataFrame()
+        self.asset_returns = pd.DataFrame()
+        self.portfolio_returns = pd.DataFrame()
+        self.covariance = pd.DataFrame()
+        self.portfolio_variance = None
+        self.portfolio_volatility = None
+        self.returns_windowed = pd.DataFrame()
+        self.volatility_series = pd.DataFrame()
+
+    def compute(self):
 
         self.asset_prices = self.repository.portfolio.loc[self.repository.begin_date: self.repository.end_date].copy(
             deep=True

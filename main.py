@@ -1,6 +1,7 @@
 import os
 
 from constants import LOGGER_NAME, LOGGING_CONFIG_FILE
+from controller import Controller
 from helpers.helpers_logging import init_logger_from_file
 from model import Model
 from repository import Repository
@@ -24,16 +25,12 @@ def main():
     view = View()
     view.set_repository(repo)
     view.init_streamlit()
-    repo.get_data()
-    model = Model(repo)
 
+    model = Model(repo)
     view.set_model(model)
 
-    view.plot_asset_prices()
-    view.plot_portfolio_returns()
-    view.display_covariance()
-    view.display_portfolio_volatility()
-    view.plot_portfolio_volatility()
+    controller = Controller(repo, model, view)
+    controller.run()
 
     logger.info("End program")
 

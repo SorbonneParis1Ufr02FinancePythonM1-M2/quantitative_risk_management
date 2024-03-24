@@ -1,14 +1,28 @@
 import logging
+import os
 from logging import config
 
 from .helpers_serialize import get_serialized_data
 
 
-def init_logger_from_file(logger_name: str, config_full_path: str):
+def init_logger_from_file(logger_name: str, config_full_path: str) -> logging.Logger:
+    """
+    Initializes the logger and run the log application if needed
+
+    :param logger_name:
+    :param config_full_path:
+    :return: logger
+    :rtype: logging.Logger
+    """
     dict_config = get_serialized_data(full_path=config_full_path)
     log_file_path = dict_config.get("handlers").get("file").get("filename")
     config.dictConfig(dict_config)
     logger = logging.getLogger(logger_name)
+    print(type(logger))
     logger.info(f"start logger {logger_name}")
     logger.info(f"logger filename={log_file_path}")
-    return logger, log_file_path
+
+    if dict_config.get("open_logging_file") and log_file_path:
+        os.startfile(log_file_path)
+
+    return logger

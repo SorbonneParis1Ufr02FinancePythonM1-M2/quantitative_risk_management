@@ -1,6 +1,6 @@
 import os
 
-from constants import LOGGER_NAME, LOGGING_CONFIG_FILE, OPEN_LOGGING_FILE
+from constants import LOGGER_NAME, LOGGING_CONFIG_FILE
 from helpers.helpers_logging import init_logger_from_file
 from model import Model
 from repository import Repository
@@ -8,19 +8,27 @@ from view import View
 
 
 def main():
+    """
+    Program entry point.
+    repo is Repository object. This object will contain all data including configuration data
+    model is a Model object. It will handle all computations.
+    view is a View object. It will be in charge of all results display tasks
+    :return: None
+    """
+    # Log initialization
     logging_config_full_path = os.path.join(os.path.dirname(__file__), LOGGING_CONFIG_FILE)
     os.makedirs(os.path.dirname(logging_config_full_path), exist_ok=True)
-    logger, logger_file_path = init_logger_from_file(logger_name=LOGGER_NAME, config_full_path=logging_config_full_path)
-    logger.info(f"logger_file_path={logger_file_path}")
-    if OPEN_LOGGING_FILE and logger_file_path:
-        os.startfile(logger_file_path)
+    logger = init_logger_from_file(logger_name=LOGGER_NAME, config_full_path=logging_config_full_path)
 
     repo = Repository()
+    view = View()
+    view.set_repository(repo)
+    view.init_streamlit()
     repo.get_data()
     model = Model(repo)
-    view = View(repo, model)
 
-    view.to_streamlit()
+    view.set_model(model)
+
     view.plot_asset_prices()
     view.plot_portfolio_returns()
     view.display_covariance()

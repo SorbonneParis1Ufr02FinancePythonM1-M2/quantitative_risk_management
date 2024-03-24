@@ -8,11 +8,19 @@ logger = logging.getLogger(LOGGER_NAME)
 
 
 class Model:
+    """
+    This class is responsible for all computations.
+    """
     def __init__(self, repository):
         logger.info("Initializing Model")
         self.repository = repository
 
-        self.asset_returns = self.repository.asset_prices.pct_change()
+        self.asset_prices = self.repository.portfolio.loc[self.repository.begin_date: self.repository.end_date].copy(
+            deep=True
+        )
+        logger.info(f"asset_prices shape={self.asset_prices.shape}")
+
+        self.asset_returns = self.asset_prices.pct_change()
         logger.debug(f"Asset returns shape={self.asset_returns.shape}")
         self.portfolio_returns = self.asset_returns.dot(self.repository.weights)
         logger.debug(f"Portfolio returns shape={self.portfolio_returns.shape}")

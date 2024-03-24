@@ -1,8 +1,12 @@
+"""
+This script allows to run Streamlit
+"""
+
 import os
 
-APP_ENTRY_POINT = 'main.py'
+APP_ENTRY_POINT = "main.py"
 
 dir_path = os.path.dirname(__file__)
 path = os.path.join(dir_path, APP_ENTRY_POINT)
 print(path)
-os.system('streamlit run "{}"'.format(path))
+os.system(f"streamlit run {path}")

@@ -1,14 +1,14 @@
-begin_date = '2008-01-01'
-end_date =  '2009-12-31'
+begin_date = "2008-01-01"
+end_date = "2009-12-31"
 weights = [0.25, 0.25, 0.25, 0.25]
 rolling_window_of_portfolio_returns = 30
 
 [input]
-input_folder = 'input'
-input_file = 'crisis_portfolio.csv'
-delimiter = ','
-index_col = 'Date'
-parse_dates = ['Date']
+input_folder = "input"
+input_file = "crisis_portfolio.csv"
+delimiter = ","
+index_col = "Date"
+parse_dates = ["Date"]
 
 [view]
 asset_prices_ylabel = "Closing Prices, USD"
@@ -16,6 +16,11 @@ portfolio_returns_ylabel = "Daily Return, %"
 portfolio_volatility_ylabel = "Daily Return, %"
 
 [streamlit]
-page_title = 'Quantitative risk '
-layout = 'wide'
-sidebar_state = 'expanded'
+page_title = "Quantitative risk"
+layout = "centered"
+sidebar_state = "expanded"
+caption_plot_asset_prices = "## Plot asset prices"
+caption_plot_portfolio_returns = "## Plot portfolio returns"
+caption_covariance = "## Covariance"
+caption_portfolio_volatility = "## Portfolio volatility"
+caption_plot_portfolio_volatility = "## Plot portfolio volatility"
